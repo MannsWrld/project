@@ -1,0 +1,36 @@
+.container {
+    width: 800px;
+    margin: 0 auto;
+    background-color:lightgrey ;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+img.octocat {
+    height: 200px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+}
+.pink {
+    background-color: pink;
+    justify-content: space-evenly;
+}
+
+.blue {
+    background-color: aqua;
+}
+
+p {
+    text-align: center;
+}
