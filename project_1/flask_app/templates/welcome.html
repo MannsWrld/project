@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome {{user.first_name}}</h1>
+    <a href="/logout">Logout</a>
+    <a href="/new_instrument">Create</a>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Type</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for get_instrument in instrument %}
+          <tr>
+            <th scope="row">{{get_instrument.name}}</th>
+            <td>{{get_instrument.brand}}</td>
+            <td>{{get_instrument.type}}</td>
+            <td> <a href="/view/instrument/{{get_instrument.id}}">View</a>
+              {% if session['user_id'] == get_instrument.user_id %}
+                <a href="/delete/{{get_instrument.id}}">Delete</a> 
+                <a href="/edit/instrument/{{get_instrument.id}}">Edit</a>
+                {%endif%}
+            </td>
+            {%endfor%}
+        </tr>
+        </tbody>
+      </table>
+</body>
+</html>

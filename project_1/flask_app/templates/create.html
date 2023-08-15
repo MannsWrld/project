@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <h1>New instrument </h1>
+    <a href="/dashboard">home</a>
+    <form action="create_instrument" method="post" class="d-flex flex-column grid gap-0 row-gap-3 shadow p-3 mb-5 bg-body-tertiary rounded">
+        <div class="container text-center">
+            <div class="row">
+                {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <div class="col">
+                <div>
+                    <input type="text" name="name" placeholder="Name:" class="form-control" id="price">
+                </dir>
+                <dir>
+                    <input type="text" name="brand" placeholder="Brand:" class="form-control" id="brand">
+                </dir>
+                <dir>
+                    <input type="text" name="type" placeholder="Type:" class="form-control" id="typew">
+                </dir>
+                <dir>
+                    <input type="text" name="price" placeholder="Price" class="form-control" id="price">
+                </dir>
+                <dir>
+                    <input type="number" name="year" placeholder="Year" class="form-control" id="year">
+                </dir>
+                <input type="hidden" name="user_id" value="{{session['user_id']}}">
+                <button class="btn btn-dark">Create</button>
+              </div>
+            </div>
+          </div>
+    </form>
+</body>
+</html>

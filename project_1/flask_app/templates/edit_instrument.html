@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit instrument Information</h1>
+    <a href="/dashboard">home</a>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <form action="/update/instrument" method="post" class="d-flex flex-column grid gap-0 row-gap-3 shadow p-3 mb-5 bg-body-tertiary rounded">
+                    <input type="hidden" name="id" value="{{one_instrument.id}}">
+                <div class="p-3">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" class="form-control" id="name" value="{{one_instrument.name}}">
+                </div>
+                <dir>
+                    <label for="brand">Brand:</label>
+                    <input type="text" name="brand" class="form-control" id="brand" value="{{one_instrument.brand}}" >
+                </dir>
+                <dir>
+                    <label for="type">Type:</label>
+                    <input type="text" name="type" class="form-control" id="type" value="{{one_instrument.type}}" >
+                </dir>
+                <dir>
+                    <label for="price">Price:</label>
+                    <input type="text" name="price" class="form-control" id="price" value="{{one_instrument.price}}">
+                </dir>
+                <dir>
+                    <label for="year">Year:</label>
+                    <input type="number" name="year" class="form-control" id="year" value="{{one_instrument.year}}" >
+                </dir>
+                <input type="hidden" name="user_id" value="{{session['user_id']}}">
+                <button class="btn btn-dark">Edit</button>
+    </form>
+</body>
+</html>
